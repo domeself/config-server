@@ -1,0 +1,50 @@
+server:
+  port: 8763
+
+eureka:
+  instance:
+    lease-renewal-interval-in-seconds: 5      # 心跳时间，即服务续约间隔时间（缺省为30s）
+    lease-expiration-duration-in-seconds: 15  # 发呆时间，即服务续约到期时间（缺省为90s）
+  client:
+    registry-fetch-interval-seconds: 10 # 拉取服务注册信息间隔（缺省为30s）
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+    healthcheck:
+      enabled: true # 开启健康检查（依赖spring-boot-starter-actuator）
+
+
+
+
+
+ribbon:
+  ConnectTimeout: 500              # 设置连接超时时间
+  ReadTimeout: 5000                 # 设置读取超时时间
+  OkToRetryOnAllOperations: true  # 对所有操作请求都进行重试
+  MaxAutoRetriesNextServer: 2     # 切换实例的重试次数
+  MaxAutoRetries: 1                # 对当前实例的重试次数
+
+# 配置请求GZIP压缩
+feign:
+  hystrix:
+      enabled: true                                          #开启fallback
+  compression:
+    request:
+      enabled: true                                          # 配置请求GZIP压缩
+      mime-types: text/xml,application/xml,application/json  # 配置压缩支持的MIME TYPE
+      min-request-size: 2048                                # 配置压缩数据大小的下限
+    response:                                                # 配置响应GZIP压缩
+      enabled: true
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 10000 # 设置熔断超时时间
+        timeout:
+          enabled: false                   # 关闭熔断功能
+
+logging:
+  level:
+    com.redapplenet.cloud.member.services.TestService: debug
