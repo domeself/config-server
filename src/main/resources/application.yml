@@ -5,7 +5,7 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/domeself/hbair_cloud.git
-          search-paths: config-server
+          uri: https://github.com/domeself/config-server.git
+          search-paths:
 server:
   port: 1201
