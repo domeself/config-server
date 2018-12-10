@@ -1,5 +1,5 @@
 server:
-  port: 8763
+  port: 8764
 
 spring:
   datasource:                  #数据源
@@ -65,3 +65,5 @@ hystrix:
             timeoutInMilliseconds: 10000 # 设置熔断超时时间
         timeout:
           enabled: false                   # 关闭熔断功能
+
+

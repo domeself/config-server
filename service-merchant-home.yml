@@ -1,10 +1,10 @@
 server:
-  port: 8763
+  port: 8764
 
 spring:
   datasource:                  #数据源
       driver-class-name: com.mysql.cj.jdbc.Driver
-      url: jdbc:mysql://192.168.1.153:3306/iums
+      url: jdbc:mysql://192.168.0.107:3306/passbook
       username: root
       password: 123456
   sleuth:                       #链路追踪
@@ -65,3 +65,5 @@ hystrix:
             timeoutInMilliseconds: 10000 # 设置熔断超时时间
         timeout:
           enabled: false                   # 关闭熔断功能
+
+
