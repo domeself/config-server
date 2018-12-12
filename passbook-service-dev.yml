@@ -18,6 +18,13 @@ spring:
         type: kafka
   kafka:                        #kafka
       bootstrap-servers: http://192.168.1.153:9092
+  data:
+      hbase:
+        quorum: 192.168.1.153:2181
+        rootDir: hdfs://192.168.1.103:9000/hbase
+        nodeParent: /hbase
+
+
 
 
 #服务注册
